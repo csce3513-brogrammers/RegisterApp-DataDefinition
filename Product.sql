@@ -12,6 +12,25 @@ CREATE TABLE product (
   OIDS=FALSE
 );
 
+--Employee table
+
+CREATE TABLE employeeinfo (
+  recordid uuid NOT NULL DEFAULT gen_random_uuid(), --I believe this should generate a random uuid, but I am not sure
+  fName character varying() NOT NULL DEFAULT(''), --Should accept string of any length
+  lName character varying() NOT NULL DEFAULT(''), --Similar to fName
+  empid uuid NOT NULL DEFAULT uuid_generate_v4(), --Currently generating random id for employee,
+  active boolean NOT NULL DEFAULT(true),
+  position integer NOT NULL DEFAULT(0), --pos 0 = cashier, pos 1 = shift manager, pos 2 = general manager
+  manager boolean NOT NULL DEFAULT(false),
+  password TEXT NOT NULL, 
+  createdon timestamp without time zone NOT NULL DEFAULT now(),
+  PRIMARY KEY (recordID)
+)
+
+--Active User Table
+
+
+
 --DROP INDEX ix_product_lookupcode;
 
 CREATE INDEX ix_product_lookupcode --An index on the product table lookupcode column
